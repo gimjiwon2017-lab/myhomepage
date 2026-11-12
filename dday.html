@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D-Day 계산기</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>김지원의 D-Day 계산기</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="contact.html">Contact</a>
+        <a href="dday.html">D-Day</a>
+    </nav>
+
+    <main class="container">
+        <section>
+            <h2>D-Day 계산기</h2>
+
+            <script>
+                let now = new Date();
+
+                let yearStr = prompt("연도를 입력하세요.");
+                let monthStr = prompt("월을 입력하세요.");
+                let dayStr = prompt("일을 입력하세요.");
+
+                if (!yearStr) {
+                    document.write("계산을 취소했습니다.");
+                }
+                else {
+                    let year = parseInt(yearStr);
+                    let month = parseInt(monthStr);
+                    let day = parseInt(dayStr);
+
+                    let targetDate = new Date(year, month - 1, day);
+
+                    let diff = targetDate.getTime() - now.getTime();
+
+                    let days = Math.ceil(Math.abs(diff) / (1000 * 60 * 60 * 24));
+
+                    if (diff > 0) {
+                        document.write("D-" + days);
+                    }
+                    else if (diff < 0) {
+                        document.write("D+" + days);
+                    }
+                    else {
+                        document.write("D-Day");
+                    }
+                }
+            </script>
+        </section>
+    </main>
+
+    <footer>
+        <small>&copy; <span id="year"></span> 김지원</small>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
